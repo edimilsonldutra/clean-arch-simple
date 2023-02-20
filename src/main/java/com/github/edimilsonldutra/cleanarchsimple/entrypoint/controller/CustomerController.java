@@ -1,5 +1,6 @@
 package com.github.edimilsonldutra.cleanarchsimple.entrypoint.controller;
 
+import com.github.edimilsonldutra.cleanarchsimple.core.usecase.DeleteCustomerByIdUseCase;
 import com.github.edimilsonldutra.cleanarchsimple.core.usecase.FindCustomerByIdUseCase;
 import com.github.edimilsonldutra.cleanarchsimple.core.usecase.InsertCustomerUseCase;
 import com.github.edimilsonldutra.cleanarchsimple.core.usecase.UpdateCustomerUseCase;
@@ -19,6 +20,8 @@ public class CustomerController {
     private FindCustomerByIdUseCase findCustomerByIdUseCase;
     private CustomerMapper customerMapper;
     private UpdateCustomerUseCase updateCustomerUseCase;
+
+    private DeleteCustomerByIdUseCase deleteCustomerByIdUseCase;
 
     @PostMapping
     public ResponseEntity<Void> insert(@Valid @RequestBody CustomerResquest customerResquest) {
@@ -40,6 +43,12 @@ public class CustomerController {
         var customer = customerMapper.toCustomer(customerResquest);
         customer.setId(id);
         updateCustomerUseCase.update(customer, customerResquest.getZipCode());
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable final String id) {
+        deleteCustomerByIdUseCase.delete(id);
         return ResponseEntity.noContent().build();
     }
 }
