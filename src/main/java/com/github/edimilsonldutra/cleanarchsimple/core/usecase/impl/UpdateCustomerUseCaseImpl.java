@@ -10,7 +10,6 @@ public class UpdateCustomerUseCaseImpl implements UpdateCustomerUseCase {
 
     private final FindCustomerByIdUseCase findCustomerByIdUseCase;
     private final FindAddresByZipCode findAddresByZipCode;
-
     private final UpdateCustomer updateCustomer;
 
     public UpdateCustomerUseCaseImpl(
