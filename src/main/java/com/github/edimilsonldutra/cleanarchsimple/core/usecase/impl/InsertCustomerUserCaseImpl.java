@@ -9,7 +9,6 @@ import com.github.edimilsonldutra.cleanarchsimple.core.usecase.InsertCustomerUse
 public class InsertCustomerUserCaseImpl implements InsertCustomerUseCase {
 
     private final FindAddresByZipCode findAddresByZipCode;
-
     private final InsertCustomer insertCustomer;
     private final SendCpfForValidation sendCpfForValidation;
 

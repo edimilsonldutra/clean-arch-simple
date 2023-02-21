@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 public class FindAddressByZipCodeImpl implements FindAddresByZipCode {
 
     @Autowired
-    private FindAddressByZipCodeClient findAddressByZipCodeClient;
-
+    private FindAddressByZipCodeClient client;
+    @Autowired
     private AddressResponseMapper addressResponseMapper;
 
     @Override
     public Address find(String zipCode) {
-        var addressResponse = findAddressByZipCodeClient.find(zipCode);
+        var addressResponse = client.find(zipCode);
         return addressResponseMapper.toAddress(addressResponse);
     }
 }

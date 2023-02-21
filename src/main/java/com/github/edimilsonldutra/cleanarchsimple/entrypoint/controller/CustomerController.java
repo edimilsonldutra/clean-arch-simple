@@ -7,20 +7,24 @@ import com.github.edimilsonldutra.cleanarchsimple.core.usecase.UpdateCustomerUse
 import com.github.edimilsonldutra.cleanarchsimple.entrypoint.controller.mapper.CustomerMapper;
 import com.github.edimilsonldutra.cleanarchsimple.entrypoint.controller.request.CustomerResquest;
 import com.github.edimilsonldutra.cleanarchsimple.entrypoint.controller.response.CustomerResponse;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/customers")
 public class CustomerController {
-
+    @Autowired
     private InsertCustomerUseCase insertCustomerUseCase;
+    @Autowired
     private FindCustomerByIdUseCase findCustomerByIdUseCase;
+    @Autowired
     private CustomerMapper customerMapper;
+    @Autowired
     private UpdateCustomerUseCase updateCustomerUseCase;
-
+    @Autowired
     private DeleteCustomerByIdUseCase deleteCustomerByIdUseCase;
 
     @PostMapping
